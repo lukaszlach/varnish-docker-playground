@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  varnish:
+    build: docker/varnish
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./varnish:/etc/varnish:ro
+    depends_on:
+      - web1
+      - web2
+
+  web1:
+    image: php:7.2-apache-stretch
+    volumes:
+      - ./web:/var/www/html
+
+  web2:
+    image: php:7.2-apache-stretch
+    volumes:
+      - ./web:/var/www/html
