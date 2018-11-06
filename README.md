@@ -1,10 +1,13 @@
 # lukaszlach / varnish-docker-playground
 
-Playground for learning basics of Varnish 5.2, all set up in Docker with two upstreams on PHP 7.2.
+Playground for learning basics of Varnish 5.2, all set up in Docker with upstreams on PHP 7.2.
 
 ## Running
 
 ```bash
+# run in foreground
+$ make run-varnish
+# run detached
 $ make start
 ```
 
@@ -28,4 +31,12 @@ $ curl 'localhost?cache=1&delay=1' -v 2>&1 | grep X-Cache
 < X-Cache: HIT hits=1
 $ curl 'localhost?cache=1&delay=1' -v 2>&1 | grep X-Cache
 < X-Cache: HIT hits=2
+```
+
+## Monitoring
+
+```bash
+$ make varnishlog
+$ make varnishncsa
+$ make varnishstat
 ```
