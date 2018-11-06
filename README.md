@@ -1,11 +1,11 @@
-# lukaszlach / uw-varnish
+# lukaszlach / varnish-docker-playground
 
 Playground for learning basics of Varnish 5.2, all set up in Docker with two upstreams on PHP 7.2.
 
 ## Running
 
 ```bash
-make start
+$ make start
 ```
 
 ## Testing
@@ -18,5 +18,14 @@ Test scripts accepts following query string parameters:
 * `grace-ttl`
 
 ```bash
-curl -v 'localhost?cache=1&delay=1&cache-ttl=10&grace-ttl=5'
+$ curl -v 'localhost?cache=1&delay=1&cache-ttl=10&grace-ttl=5'
+```
+
+```bash
+$ curl 'localhost?cache=1&delay=1' -v 2>&1 | grep X-Cache
+< X-Cache: MISS
+$ curl 'localhost?cache=1&delay=1' -v 2>&1 | grep X-Cache
+< X-Cache: HIT hits=1
+$ curl 'localhost?cache=1&delay=1' -v 2>&1 | grep X-Cache
+< X-Cache: HIT hits=2
 ```
