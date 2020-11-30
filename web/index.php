@@ -6,14 +6,15 @@ $cache = $_GET['cache'] ?? false; // whether to send caching response header
 $cacheTtl = $_GET['cache-ttl'] ?? 10;
 $graceTtl = $_GET['grace-ttl'] ?? 0;
 
-header($cache ?
-    "Cache-Control: public, max-age=$cacheTtl, stale-while-revalidate=$graceTtl" :
-    'Cache-Control: no-cache'
-);
+$cacheHeader = $cache ?
+    "Cache-Control: public, s-maxage=$cacheTtl, stale-while-revalidate=$graceTtl" :
+    'Cache-Control: no-cache';
+header($cacheHeader);
 if ($delay) {
-    sleep(random_int(1, 3));
+    sleep(3);
 }
 var_dump(
-    getallheaders(),
-    time()
+    date('d.m.Y H:i:s'),
+    $cacheHeader,
+    gethostname()
 );
