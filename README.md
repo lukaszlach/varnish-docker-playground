@@ -1,6 +1,6 @@
 # lukaszlach / varnish-docker-playground
 
-Playground for learning basics of Varnish 5.2, all set up in Docker with upstreams on PHP 7.2.
+Playground for learning basics of Varnish 6, all set up in Docker with upstreams on PHP 7.2.
 
 ## Running
 
