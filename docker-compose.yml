@@ -2,8 +2,7 @@ version: '3.5'
 
 services:
   varnish:
-    build: docker/varnish
-    restart: always
+    image: varnish:6
     ports:
       - 80:80
     volumes:
