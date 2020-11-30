@@ -33,6 +33,16 @@ $ curl 'localhost?cache=1&delay=1' -v 2>&1 | grep X-Cache
 < X-Cache: HIT hits=2
 ```
 
+```bash
+$ make ab-cache | grep "Requests per second"
+Finished 2996 requests
+Requests per second:    299.59 [#/sec] (mean)
+
+$ make ab-no-cache | grep "Requests per second"
+Finished 42 requests
+Requests per second:    3.47 [#/sec] (mean)
+```
+
 ## Monitoring
 
 ```bash
